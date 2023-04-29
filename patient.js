@@ -39,7 +39,7 @@ user_logado()
 
 //_POST
 async function create_user(patient){
-  await fetch("http://localhost:3000/patient", {
+  await fetch("https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient", {
       method: "POST",
       headers: {
           'Accept': 'application/json, text/plain, */*',
@@ -80,7 +80,7 @@ new_Paciente.addEventListener('submit', function add_customer(e){
 let page = 1
 //_GET. Carrega a lista de pacientes na tela inicial
 async function get_patient(){
-  const res_fetch = await fetch(`http://localhost:3000/patient?_page=${page}&_limit=5`)
+  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_page=${page}&_limit=5`)
   const reg_patients = await res_fetch.json()
   print_pacientPage(reg_patients)
   return reg_patients
@@ -104,7 +104,7 @@ get_patient()
 
 //GET - Função que obtenho o tamanho da minha lista do JSON, uso essa informação para fazer a paginação
 async function all_patient(){
-  const res_fetch = await fetch(`http://localhost:3000/patient`)
+  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient`)
   const reg_patients = await res_fetch.json()
   return reg_patients
 }
@@ -127,7 +127,7 @@ const next_page = document.querySelector('.next_page')
 next_page.addEventListener('click', async function avanca(){
   get_patient()
   await addition()
-  const res_fetch = await fetch(`http://localhost:3000/patient?_page=${page}&_limit=5`)
+  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_page=${page}&_limit=5`)
   const reg_patients = await res_fetch.json()
   div_patients.innerHTML = ""
   print_pacientPage(reg_patients)
@@ -145,7 +145,7 @@ const return_page = document.querySelector('.return_page')
 return_page.addEventListener('click', async function volta(){
   get_patient()
   deduct()
-  const res_fetch = await fetch(`http://localhost:3000/patient?_page=${page}&_limit=5`)
+  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_page=${page}&_limit=5`)
   const reg_patients = await res_fetch.json()
   div_patients.innerHTML = ""
   print_pacientPage(reg_patients)
@@ -169,7 +169,7 @@ async function seila(id){
 
 //PUT
 async function put_patient(id, patient){
-  await fetch(`http://localhost:3000/patient/${id}`, {
+  await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient/${id}`, {
     method: "PUT",
     headers: {
       'Accept': 'application/json, text/plain, */*',
@@ -204,7 +204,7 @@ bt_edit_patient.addEventListener('click', async function update_pacient(e){
 })
 //GET/(para PUT)-Recebe informações do banco de dados para possível edição. Acionada quando clica no ícone ".bt_edit" na tela my_patients
 async function get_editPatient(id, patient){
-  const res_fetch = await fetch('http://localhost:3000/patient/' + id)
+  const res_fetch = await fetch('https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient/' + id)
   const reg_patients = await res_fetch.json()
   title_modal.innerHTML = 'Editar dados do paciente'
   
@@ -242,7 +242,7 @@ function remove_patient(id, nome, pacient){
 }
 //DELETE
 async function detele_pacient(id, pacient){
-  await fetch(`http://localhost:3000/patient/${id}`, {
+  await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient/${id}`, {
     method: "DELETE"
   })
   div_patients.innerHTML = ''
@@ -251,7 +251,7 @@ async function detele_pacient(id, pacient){
 
 //GET - Filtro por nome. Após pesquisa, os dados são recarregados conforme solicitação de pesquisa. Acionada no botão "bt_filter" (p/ usuário: Filtrar)
 async function get_filterPacient(nome){
-  const res_fetch = await fetch('http://localhost:3000/patient?q='+ nome)
+  const res_fetch = await fetch('https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?q='+ nome)
   const reg_patients = await res_fetch.json()
   div_patients.innerHTML = ''
   console.log(reg_patients)
@@ -286,7 +286,7 @@ input_filterPatient.addEventListener('keypress', async function praque(tecla){
 let typeOrder
 
 async function get_orderPacients(orderBy, typeOrder){
-  const res_fetch = await fetch(`http://localhost:3000/patient?_sort=${orderBy}&_order=${typeOrder}`)
+  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_sort=${orderBy}&_order=${typeOrder}`)
   const listPatient = await res_fetch.json()
   console.log(listPatient)
   print_pacientPage(listPatient)
