@@ -22,7 +22,7 @@ let status_logado = false
 
 //_tela de login
 async function create_user(user){
-    await fetch("http://localhost:3000/user", {
+    await fetch("https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/user", {
         method: "POST",
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -33,7 +33,7 @@ async function create_user(user){
 }
 
 async function get_user(email, senha){
-    const res_fetch = await fetch('http://localhost:3000/user?email='+ email + '&password='+ senha)
+    const res_fetch = await fetch('https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/user?email='+ email + '&password='+ senha)
     const list_users = await res_fetch.json()
     console.log('http://localhost:3000/user?email='+ email + '&password='+ senha)
     return list_users
