@@ -1,5 +1,5 @@
-# Projeto-Arnia
- :blue_book::rocket:1º módulo Arnia: Projeto: Gerenciador de Pacientes :rocket::blue_book:
+# :blue_book::rocket:Projeto-Arnia:rocket::blue_book:
+1º módulo Arnia: Projeto: Gerenciador de Pacientes
 
 1. :page_with_curl: Descrição do projeto:
 - Nome do projeto: Gerenciador de pacientes;
