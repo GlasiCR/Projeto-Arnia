@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- _library Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="patient.css">
+  <link rel="shortcut icon" href="imagens/favicon-wexer.png" type="">
+  <title>Prontuário</title>
+ <!--_library Animatte -->
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+</head>
+<body onload="prontuario()">
+<!-- _header page -->
+    <div id="up" class="container-fluid p-0 m-0 bg-white">
+        <div class="col-12 p-0 m-0 d-flex justify-content-between">
+            <div class="d-flex">
+                <div class="m-0 p-0 img_headerNav">
+                    <img class="py-2 px-3 img_header" src="imagens/logoHeader.png">
+                </div>
+                <a class="d-none d-sm-block align-self-center ms-4 font_comfortaa text-decoration-none text-black text-start" href="patient.html">Voltar para listagem</a>
+            </div>
+            <div class="d-flex justify-content-end dropdown-center">
+                <button class="btn dropdown-toggle font_montserrat txt_green border-0" data-bs-toggle="dropdown" aria-expanded="false">Bem vindo(a), <span id=""class="txt_green font_montserrat nav_nameUser name_userLogado"></span>
+                <ul class="dropdown-menu">
+                    <div class="bg_degrade ps-2 py-1 pe-5">
+                        <li>Admin</li>
+                        <li id=""class="logged_user email_userLogado"></li>
+                      </div>
+                      <li><a class="dropdown-item" href="index.html"><img class="pe-1 remove_bg" src="imagens/icon_exit.png">Sair</a></li>
+                </ul>
+              </div>
+        </div>
+    </div>
+<!-- Header prontuário -->
+    <div class="container d-block" id="inf_prontuario">
+        <div class="d-md-none d-flex align-items-center justify-content-end gap-1">
+            <i class="fa-solid fa-chevron-left" style="color: #4F4F4F;"></i>
+            <a class="text-decoration-none text-black" href="patient.html">Voltar</a>
+        </div>
+        <div class="row col-11 mt-5 mx-auto flex-column flex-lg-row justify-content-lg-between justify-content-center">
+            <div class="col-lg-5 col-12">
+                <h3 class="col-12 col-lg-3 title_pront">Prontuário</h3>
+            </div>
+            <div class="col-12 col-lg-7">                
+                <div class="input-group d-flex justify-content-center justify-content-lg-end mb-3">
+                    <form class=>
+                        <input onkeypress="filter_pacient()" type="text" class="rounded-start-pill form-control input_filterPatient" placeholder="Pesquisar" aria-label="Pesquisar" aria-describedby="button-addon2">
+                    </form>  
+                    <button class="btn font_montserrat bt_green bt_filter" type="button" id="button-addon2">
+                        <i class="fa-solid fa-magnifying-glass pe-2"></i>
+                        <span class="d-none d-sm-inline-block">Filtrar</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+<!-- Body prontuário -->
+        <div class="row col-11 mt-4 mx-auto">
+<!-- Identificação do paciente (esq.) -->
+            <div class="col-lg-4 col-12">
+                <div class="infs p-4">
+                    <h4 class="font_montserrat id_pat">Identificação do paciente</h4>
+                    <div class="d-flex mt-4">
+                        <div>
+                            <img src="imagens/ic-user.png">
+                        </div>
+                        <div class="ms-2">
+                            <span class="txt_green">Paciente</span> 
+                            <p class="inf_pront" id="name_pront"></p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <img src="imagens/ic-cldrio.png">
+                        </div>
+                        <div class="ms-2">
+                            <span class="txt_green">Nascimento</span>
+                            <p class="inf_pront" id="born_pront">10/09/2000</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <img src="imagens/ic-prof.png">
+                        </div>
+                        <div class="ms-2">
+                            <span class="txt_green">Profissão</span>
+                            <p class="inf_pront" id="prof_pront">Designer</p>
+                        </div>
+                    </div>
+                    <div class="d-flex">
+                        <div>
+                            <img src="imagens/ic-esc.png">
+                        </div>
+                        <div class="ms-2">
+                            <span class="txt_green">Escolaridade</span>
+                            <p class="inf_pront" id="sc_pront">Superior incompleto</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!-- Informações sobre sessão e fato relevante (dir.) -->
+            <div class="mt-3 mt-lg-0 col-lg-8 col-12">
+<!-- Lado Direito: Header menu -->
+                <div class="d-flex justify-content-around infs py-4">
+                    <div class="font_montserrat d-flex gap-2 altCur" data-bs-toggle="modal" data-bs-target="#newSection">
+                        <div>
+                            <img src="imagens/ic-sessao.png">
+                        </div>
+                        <h6 class="mt-1">Sessão</h6>
+                    </div>
+                    <div class="font_montserrat d-flex gap-2 altCur" data-bs-toggle="modal" data-bs-target="#relevant_fact">
+                        <div >    
+                            <img src="imagens/ic-frelevante.png">
+                        </div> 
+                        <h6 class="mt-1">Fato relevante</h6>
+                    </div>
+                </div>
+<!-- Lado Direito: Filtro(dropdown) -->
+                <div class="d-flex align-item-center justify-content-center mt-4 gap-1">
+                    <div class="w_hr">
+                        <hr>
+                    </div>
+                    <div class="w_nav">
+                        <ul class="list-unstyled">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle txt_nav pt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Filtrar por: <b>Todos</b>
+                                </a>
+                                <ul class="dropdown-menu list-unstyled">
+                                    <li class="drop_todos"><a class="dropdown-item" href="#">Todos</a></li>
+                                    <li><a class="dropdown-item" href="#">Sessão</a></li>
+                                    <li><a class="dropdown-item" href="#">Fato Relevante</a></li>
+                                </ul>
+                            </li>
+                        </ul>    
+                    </div>
+                </div>
+<!-- Lado Direito: Boxes -->
+                <div class="position-relative mt-3 div_bolete_session">
+                    <div class="position-absolute top-0 end-0 me-4 mt-3">
+                        <div class="w_nav">
+                            <ul class="list-unstyled">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-button txt_nav pt-2" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="imagens/illipsis.png">
+                                    </a>
+                                    <ul class="ps-3 dropdown-menu list-unstyled">
+                                        <li class="my-2 text_field font_montserrat"><img src="imagens/ic-edit.png"> Editar</li>
+                                        <li  class="my-2 text_red font_montserrat"><img src="imagens/ic-delete.png"> Excluir</li>
+                                    </ul>
+                                </li>
+                            </ul>    
+                        </div>    
+
+
+                    </div>
+                    <div class="position-absolute top-0 translate-middle p-1 ms-5 mb-2 icon_pront_green icon_pront">
+                        <img src="imagens/mental-health.png">
+                    </div>
+                    <div class="py-4 ms-4">
+                        <div class="mb-3">
+                            <h4 class="m-0">Sessão 2</h4>
+                            <small>22 de setembro de 2022</small>
+                        </div>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet facere in quo, qui reprehenderit non nesciunt excepturi, laboriosam esse quia obcaecati, corrupti doloribus ipsa sunt rem? Sit eum distinctio dolorem?...<a class="text-decoration-none" href="pront_infSessao.html">Ver mais</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-5 line_vert icon_pront_blue">
+                </div>
+                <div class="position-relative mt-3 div_bolete_fact">
+                    <div class="position-absolute top-0 end-0 me-4 mt-3">
+                        <img src="imagens/illipsis.png">
+                    </div>
+                    <div class="position-absolute top-0 translate-middle p-1 ms-5 mb-2 icon_pront_blue icon_pront">
+                        <img class="p-1" src="imagens/pin.png">
+                    </div>
+                    <div class="py-4 ms-4">
+                        <div class="mb-3">
+                            <h4 class="m-0">Fato Relevante</h4>
+                            <small>15 de setembro de 2022</small>
+                        </div>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ms-5 line_vert icon_pront_green">
+                </div>
+                <div class="position-relative mt-3 div_bolete_session">
+                    <div class="position-absolute top-0 end-0 me-4 mt-3">
+                        <img src="imagens/illipsis.png">
+                    </div>
+                    <div class="position-absolute top-0 translate-middle p-1 ms-5 mb-2 icon_pront_green icon_pront">
+                        <img src="imagens/mental-health.png">
+                    </div>
+                    <div class="py-4 ms-4">
+                        <div class="mb-3">
+                            <h4 class="m-0">Sessão 1</h4>
+                            <small>01 de setembro de 2022</small>
+                        </div>
+                        <div>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet facere in quo, qui reprehenderit non nesciunt excepturi, laboriosam esse quia obcaecati, corrupti doloribus ipsa sunt rem? Sit eum distinctio dolorem?...<a class="text-decoration-none" href="">Ver mais</a></p>
+                        </div>
+                    </div>
+                </div>
+<!-- Lado Direito: Footer -->
+                <div class="d-flex justify-content-center my-5 gap-2">
+                    <div>
+                        <i class="fa-solid fa-angles-up" style="color: #231F20;"></i>
+                    </div>
+                    <div>
+                        <a href="#up" class="text-decoration-none text-black">Voltar para o topo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal: Fato relevante -->
+    <div class="modal fade " id="relevant_fact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="d-flex justify-content-between">
+                        <h1 class="modal-title fs-5 txt_green modalPront">Novo Fato Relevante</h1>
+                        <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark" style="color: #0c1422;"></i></button>
+                    </div>
+                    <div>
+                        <form class="row g-2">
+                            <div class="col-md-5">
+                                <label for="inputData" class="form-label">Data*</label>
+                                <input type="date" class="form-control" id="inputData">
+                            </div>
+                            <div class="col-md-7">
+                                <label for="inputTitulo" class="form-label">Título*</label>
+                                <input type="password" class="form-control" id="inputTitulo" placeholder="Digite">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputDescricao" class="form-label">Descrição*</label>
+                                <textarea type="text" class="form-control" rows="4" id="inputDescricao" placeholder="Digite"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div>
+                        *Campos obrigatórios
+                    </div>
+                    <div>
+                        <button type="button" class="btn px-5" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn bt_green py-2 px-5">Criar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal: Nova Sessão -->
+    <div class="modal fade " id="newSection" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+            <div class="modal-content">
+                <div class="modal-header d-flex justify-content-between">
+                    <h1 class="modal-title fs-5 txt_green modalPront">Nova Sessão</h1>
+                    <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close"><i class="fa-solid fa-circle-xmark" style="color: #0c1422;"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div> 
+                        <form class="row g-3">
+                            <div class="d-flex align-item-center gap-2">
+                                <p class="icon_pront text-white py-2 px-3">1</p>
+                                <p class="icon_pront text-black bg-white py-2">Dados Gerais</p>
+                            </div>      
+                            <div class="col-4">
+                                <label for="inputData" class="form-label">Data*</label>
+                                <input type="date" class="form-control" id="inputData">
+                            </div>
+                            <div class="col-4">
+                                <label for="inputClockStar" class="form-label">Hora de início*</label>
+                                <input type="time" class="form-control" id="inputClockStar" placeholder="12:00">
+                            </div>
+                            <div class="col-4">
+                                <label for="inputClockEnd" class="form-label">Hora fim*</label>
+                                <input type="time" class="form-control" id="inputClockEnd" placeholder="13:00">
+                            </div>
+                            <hr class="mt-4">
+                            <div class="d-flex align-item-center gap-2">
+                                <p class="icon_pront text-white py-2 px-3">
+                                    2
+                                </p>
+                                <p class="icon_pront text-black bg-white py-2">Dados Gerais</p>
+                            </div>     
+                            <div class="col-12">
+                                <label for="inputTitulo" class="form-label">Título*</label>
+                                <input type="text" class="form-control" id="inputTitulo" placeholder="Digite">
+                            </div>
+                            <div class="col-12">
+                                <label for="inputResume" class="form-label">Resumo da sessão*</label>
+                                <textarea type="text" class="form-control" rows="4" id="inputResume" placeholder="Digite"></textarea>
+                            </div>
+                            <hr class="mt-4">
+                            <div class="d-flex align-item-center py-2 gap-2">
+                                <p class="icon_pront text-white py-2 px-3">
+                                    3
+                                </p>
+                                <p class="icon_pront text-black bg-white">Pagamento</p>
+                            </div>
+                            <div class="col-4">
+                                <label for="inputCurrancy">Valor</label>
+                                <input class="form-control" id="inputCurrancy" placeholder="R$ 150,99">
+                            </div>
+                            <div class="col-4">
+                                <label>Forma de pagamento</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Selecione uma opção</option>
+                                    <option value="pix">PIX</option>
+                                    <option value="din">Dinheiro</option>
+                                    <option value="ccv">Cartão de crédito a vista</option>
+                                    <option value="ccp">Cartão de crédito a prazo</option>
+                                    <option value="deb">Cartão de débito</option>
+                                    <option value="chq">Cheque</option>
+                                </select>
+                            </div>
+                            <div class="col-4">
+                                <label>Status</label>
+                                <div class="d-flex gap-2">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                                        <label class="form-check-label" for="flexRadioDefault1">Pago</label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                                        <label class="form-check-label" for="flexRadioDefault2">Não pago</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <i class="fa-solid fa-thumbtack rotated pe-2" style="color: #00995D;"></i>
+                                <small><b>Dica:</b> Registrar os pagamentos das sessões irá te auxiliar na sua organização financeira.</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <div>
+                         *Campos obrigatórios
+                    </div>
+                    <div>
+                        <button type="button" class="btn px-5" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn bt_green py-2 px-5">Criar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- _library Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+  <!-- _library font Awesome -->
+  <script src="https://kit.fontawesome.com/94ad710333.js" crossorigin="anonymous"></script>
+  <!-- _my script -->
+  <script src="patient.js"></script>
+</body>
+</html>

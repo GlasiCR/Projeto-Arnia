@@ -1,0 +1,244 @@
+/*_font Montserrat*/
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+/*_font Confortaa*/
+@import url(https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;600;700&family=Montserrat:ital,wght@0,100;0,200;0,300;0,500;0,600;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);
+
+body{
+    background: #E5E5E5;
+    margin: 0;
+    padding: 0;
+}
+.font_montserrat{
+    font-family: 'Montserrat', sans-serif;
+}
+.font_comfortaa{
+font-family: 'Comfortaa', cursive;
+}
+/*_nav/header*/
+.header_nav{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #FFFFFF;
+}
+.img_headerNav{
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+}
+.txt_green{
+    color: #017849;
+    font-size: 1,5rem;
+}
+.txt_green:hover{
+    color: #017849;
+    border: none;
+}
+.nav_nameUser{
+    font-weight: bold;
+}
+.dropdown-toggle{
+   font-size: 1,5rem;
+}
+.bg_degrade{
+    background: linear-gradient(#FFFFFF, #E5E5E5);
+}
+.dropdown-menu{
+    box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.2);
+    border: 20px;
+}
+/*_body*/
+.my_patients{
+    color: #4F4F4F;
+    font-size: 1,5rem;
+}
+.list_patients{
+    background-color: #FFFFFF;
+    border-radius: 16px;
+}
+.div_patients{
+    border: 1px solid #E0E0E0;
+}
+.text_field{
+    color: #2F80ED;
+    font-size: 1rem;
+    font-weight: 400;
+}
+.bt_newReg{
+    border-radius: 50px;
+    font-size: 1rem;
+}
+.bt_filter{
+    border-radius: 0 50px 50px 0;
+    font-size: 1rem;
+}
+.remove_bg{
+    background-color: transparent;
+}
+.altCur{
+    cursor: pointer;
+}
+.text_red{
+    color: #EB5757;
+    font-size: 16px;
+    font-weight: 400;
+}
+.return_page{
+    border-radius: 50px;
+}
+.next_page{
+    border-radius: 50px;
+}
+/*_modal: novo cadastro*/
+.btn-close{
+    background-color: black;
+    border-radius: 50px;
+    color: white;
+    font-size: 10px;
+}
+.bt_green{
+    background-color: #00995D;
+    border: none;
+    color: white;
+}
+.bt_green:hover{
+    background-color: #00995D;
+    border: none;
+    color: white;
+}
+.gif{
+    background-color: transparent;
+    width:30%;
+    height:30%;
+}
+.bt_regSucess{
+    width: 40%;
+}
+/*edição*/
+#elementVisibility{
+    border: none;
+    background-color: transparent;
+}
+/*_js*/
+.bt_action{
+    background-color: transparent;
+    border: none;
+}
+.codigo_do_cliente, .nome_do_cliente, .cpf_do_cliente{
+    color: #4F4F4F;
+    font-family: 'Comfortaa', cursive;
+    font-size: 1rem;
+    font-weight: 400;
+    vertical-align: middle;
+}
+
+/*PRONTUÁRIO*/
+.infs{
+    font-family: 'Montserrat', sans-serif;
+    background-color: #ffffff;
+    border: 1px solid #E0E0E0;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.id_pat{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px; 
+    color: #212121;
+}
+.inf_pront{
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 170%;
+    color: #616161;
+}
+.title_pront{
+    font-family: 'Comfortaa';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 27px;
+    color: #4F4F4F;
+}
+.txt_nav{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #757575;
+}
+.w_hr{
+    width: 80%;
+}
+.div_bolete_session{
+    background-color: white;
+    border-left: 3px solid #00995D;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 8px 8px 0px;
+}
+.icon_pront{
+    border-radius: 50px;
+}
+.icon_pront_green{
+    background-color: #00995D;
+}
+.icon_pront_blue{
+    background-color: #2F80ED;
+}
+.line_vert{
+    height: 25px;
+    width: 3px;
+}
+.div_bolete_fact{
+    background-color: white;
+    border-left: 3px solid  #2F80ED;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 0px 8px 8px 0px;
+}
+.drop_todos{
+    background-color: #C5F2E0;
+    color: #00995D;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 0;
+    margin: 0;
+}
+/*Informações sessão*/
+.title_pag{
+    color: #757575;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15px;
+}
+.h4_pagamento{
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+}
+.hd_infSessao{
+    border-radius: 16px 0 0 16px;
+    color: #4F4F4F;
+    padding-top: 3px;
+}
+.inf_sessao{
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+.detail_sessao{
+    margin-left: 50px;
+}
+.modalPront{
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;  
+}
+.icon_pront{
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;  
+}
+.rotated{
+    transform: rotate(45deg);
+}
