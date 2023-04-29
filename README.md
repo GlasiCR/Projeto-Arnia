@@ -18,4 +18,4 @@
 - Prontuários contendo informações sobre as últimas sessões e fatos relevantes (nesta parte não há comunicação com o API).
 
 4. :mega: Contribuições:
-- Estou sempre aberta a feedback's, dê a sua contribuição e ajude a melhorar ;)
+- Estou sempre aberta a feedback's, dê a sua contribuição e ajude a melhorar :wink::sunglasses:
