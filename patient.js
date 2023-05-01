@@ -66,6 +66,7 @@ new_Paciente.addEventListener('submit', function add_customer(e){
     nome_pai: document.querySelector('.fatherName_customer').value,
   }
   create_user(patient)
+  
   modalCreatePacient.hide()
   div_patients.innerHTML = ''
   new_Paciente.reset()
@@ -108,48 +109,19 @@ async function all_patient(){
   const reg_patients = await res_fetch.json()
   return reg_patients
 }
-//GET - Funções para ir para a próxima página
-async function addition(){
-  let all_patients = await all_patient()
-  let total_patients = all_patients.length
-  const divisor = 5
-
-  let rest = total_patients%divisor
-  console.log(`${total_patients} % ${divisor} = ${rest}. O total de pacientes é ${total_patients}`)
-  if(page == rest){
-    page = 1
-    get_patient()
-  }else{
-  page = page + 1
-  }
-}
 const next_page = document.querySelector('.next_page')
 next_page.addEventListener('click', async function avanca(){
-  get_patient()
-  await addition()
-  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_page=${page}&_limit=5`)
-  const reg_patients = await res_fetch.json()
+  page = page + 1
   div_patients.innerHTML = ""
-  print_pacientPage(reg_patients)
-  return reg_patients
+  get_patient()
 })
-//GET - Funções para voltar a página
-function deduct(){
-  if(page == 1){
-    console.log("nada")
-  }else{    
-  page = page - 1
-  }
-}
 const return_page = document.querySelector('.return_page')
 return_page.addEventListener('click', async function volta(){
-  get_patient()
-  deduct()
-  const res_fetch = await fetch(`https://db-projeto-arnia-gerenciador-de-pacientes.onrender.com/patient?_page=${page}&_limit=5`)
-  const reg_patients = await res_fetch.json()
+  if(page > 1){
+    page = page - 1
+  }
   div_patients.innerHTML = ""
-  print_pacientPage(reg_patients)
-  return reg_patients
+  get_patient()
 })
 
 //GET - Funções que realizam a dinâmica de, ao clicar na linha do paciente, aparece o modal de edição, mas com os inputs dimados
