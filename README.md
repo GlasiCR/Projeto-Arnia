@@ -19,3 +19,6 @@
 
 4. :mega: Contribuições:
 - Estou sempre aberta a feedback's, dê a sua contribuição e ajude a melhorar :wink::sunglasses:
+
+Projeto publicado no Vercel:
+projeto-arnia-gerenciador-de-pacientes.vercel.app
